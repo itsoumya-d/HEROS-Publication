@@ -2,18 +2,86 @@
   "published_at": "2026-10-31",
   "hf_user": "itssoumyad",
   "spaces": [
-    {"name": "portfolio", "url": "https://huggingface.co/spaces/itssoumyad/portfolio", "sdk": "static", "stage": "RUNNING"},
-    {"name": "heros-rl", "url": "https://huggingface.co/spaces/itssoumyad/heros-rl", "sdk": "static", "stage": "RUNNING"},
-    {"name": "reflexion-swe", "url": "https://huggingface.co/spaces/itssoumyad/reflexion-swe", "sdk": "static", "stage": "RUNNING"},
-    {"name": "graphrag-codeaudit", "url": "https://huggingface.co/spaces/itssoumyad/graphrag-codeaudit", "sdk": "static", "stage": "RUNNING"}
+    {
+      "name": "portfolio",
+      "url": "https://huggingface.co/spaces/itssoumyad/portfolio",
+      "sdk": "static",
+      "stage": "RUNNING"
+    },
+    {
+      "name": "heros-rl",
+      "url": "https://huggingface.co/spaces/itssoumyad/heros-rl",
+      "sdk": "static",
+      "stage": "RUNNING"
+    },
+    {
+      "name": "reflexion-swe",
+      "url": "https://huggingface.co/spaces/itssoumyad/reflexion-swe",
+      "sdk": "static",
+      "stage": "RUNNING"
+    },
+    {
+      "name": "graphrag-codeaudit",
+      "url": "https://huggingface.co/spaces/itssoumyad/graphrag-codeaudit",
+      "sdk": "static",
+      "stage": "RUNNING"
+    },
+    {
+      "name": "edgeinfer-v2",
+      "url": "https://huggingface.co/spaces/itssoumyad/edgeinfer-v2",
+      "sdk": "static",
+      "stage": "RUNNING"
+    },
+    {
+      "name": "peervault-pqc",
+      "url": "https://huggingface.co/spaces/itssoumyad/peervault-pqc",
+      "sdk": "static",
+      "stage": "RUNNING"
+    },
+    {
+      "name": "heros-firewall",
+      "url": "https://huggingface.co/spaces/itssoumyad/heros-firewall",
+      "sdk": "static",
+      "stage": "RUNNING"
+    },
+    {
+      "name": "anthropic-perfbench",
+      "url": "https://huggingface.co/spaces/itssoumyad/anthropic-perfbench",
+      "sdk": "static",
+      "stage": "RUNNING"
+    },
+    {
+      "name": "routellm-gateway",
+      "url": "https://huggingface.co/spaces/itssoumyad/routellm-gateway",
+      "sdk": "static",
+      "stage": "RUNNING"
+    },
+    {
+      "name": "mobbin-ui-compiler",
+      "url": "https://huggingface.co/spaces/itssoumyad/mobbin-ui-compiler",
+      "sdk": "static",
+      "stage": "RUNNING"
+    },
+    {
+      "name": "heros-cloud-saas",
+      "url": "https://huggingface.co/spaces/itssoumyad/heros-cloud-saas",
+      "sdk": "static",
+      "stage": "RUNNING"
+    }
   ],
   "datasets": [
-    {"name": "heros-migration-500", "url": "https://huggingface.co/datasets/itssoumyad/heros-migration-500"},
-    {"name": "graphrag-questions-100", "url": "https://huggingface.co/datasets/itssoumyad/graphrag-questions-100"}
+    {
+      "name": "heros-migration-500",
+      "url": "https://huggingface.co/datasets/itssoumyad/heros-migration-500"
+    },
+    {
+      "name": "graphrag-questions-100",
+      "url": "https://huggingface.co/datasets/itssoumyad/graphrag-questions-100"
+    }
   ],
   "boundaries": [
-    "Hugging Face requires PRO for Gradio/Docker Spaces on cpu-basic; published demos are static.",
-    "No model weights were uploaded because no GPU training was run.",
-    "The Spaces show deterministic rewards/harness evidence, not trained-model results."
+    "All demo Spaces are static because Hugging Face requires PRO for Gradio/Docker Spaces on cpu-basic.",
+    "No model weights were uploaded because no GPU training was run; ZeroGPU demos are not claimed.",
+    "Evidence pages show deterministic/synthetic/mock local results, not production or customer results."
   ]
 }

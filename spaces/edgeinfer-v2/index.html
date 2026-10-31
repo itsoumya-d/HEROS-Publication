@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>edgeinfer v2</title><style>
+:root{--paper:#f7f5f2;--ink:#161616;--muted:#6b655d;--line:#e4e0da;--accent:#b42318;--ok:#067647}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 ui-sans-serif,system-ui,sans-serif}
+main{max-width:1040px;margin:0 auto;padding:48px 24px}h1{font-size:44px;line-height:1.03;letter-spacing:-.035em;margin:0 0 14px}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,monospace;color:var(--accent);font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin:0 0 10px}
+.lead{color:var(--muted);max-width:78ch;font-size:17px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:24px 0}
+.stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}.stat b{display:block;font-size:28px;letter-spacing:-.02em}.stat span{font-size:12px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:18px 0;font-size:14px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line)}th{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}tr:last-child td{border-bottom:0}
+code,pre{font-family:ui-monospace,SFMono-Regular,monospace}pre{background:#101114;color:#e7e5e1;padding:16px;border-radius:14px;overflow:auto;font-size:13px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin:16px 0}.note{font-size:13px;color:var(--muted)}
+a{color:var(--accent)}img{max-width:100%;border-radius:14px;border:1px solid var(--line);background:#fff}
+.tag{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:2px 8px;font-size:11px;margin:0 6px 6px 0;color:var(--muted)}
+.links a{display:inline-flex;min-height:42px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:0 12px;margin:4px 8px 4px 0;font-size:13px;font-weight:650;text-decoration:none;color:var(--ink)}.links a.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+</style></head><body><main>
+<p class="eyebrow">edgeinfer · browser inference + retrieval</p><h1>edgeinfer v2</h1><p class="lead">Two-stage Matryoshka retrieval, speculative decoding, and client-side ONNX inference. All numbers below are synthetic/mock local benchmarks, not MTEB or WebGPU measurements.</p><div class="grid"><div class="stat"><b>95/95</b><span>tests</span></div><div class="stat"><b>25.1 ms</b><span>coarse+re-rank p50 · 100k×768</span></div><div class="stat"><b>0.725→1.000</b><span>Recall@10 · d=64→768</span></div><div class="stat"><b>68.4%</b><span>mock speculative acceptance</span></div></div>
+<table><thead><tr><th>Metric</th><th>Value</th><th>Boundary</th></tr></thead><tbody>
+<tr><td>Index build</td><td>1.76 s</td><td>100k synthetic chunks</td></tr>
+<tr><td>Coarse scan</td><td>p50 25.08 ms / p95 59.41 ms</td><td>INT8 d=64 + FP32 top-50 re-rank</td></tr>
+<tr><td>Speculative decoding</td><td>0.45 target calls/token; modeled 1.64×</td><td>Mock latencies; no WebGPU run</td></tr>
+<tr><td>ONNX input casting</td><td>BigInt64Array when metadata says int64</td><td>Covered by tests</td></tr>
+</tbody></table>
+<p class="note">Synthetic and mock benchmarks only. Not MTEB, not WebGPU tokens/sec.</p><div class="links"><a class="primary" href="https://github.com/itsoumya-d/edgeinfer">Source & CI</a><a href="https://huggingface.co/spaces/itssoumyad/portfolio">Portfolio hub</a></div>
+<p class="note">Measured local evidence only. No deployment, customer, or trained-weight claim is made unless explicitly stated.</p>
+</main></body></html>

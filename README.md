@@ -22,6 +22,13 @@ runtime status.
 | HEROS-RL reward lab | https://huggingface.co/spaces/itssoumyad/heros-rl |
 | Reflexion-SWE demo | https://huggingface.co/spaces/itssoumyad/reflexion-swe |
 | GraphRAG explorer | https://huggingface.co/spaces/itssoumyad/graphrag-codeaudit |
+| edgeinfer-v2 evidence | https://huggingface.co/spaces/itssoumyad/edgeinfer-v2 |
+| peervault PQC evidence | https://huggingface.co/spaces/itssoumyad/peervault-pqc |
+| HEROS-Firewall evidence | https://huggingface.co/spaces/itssoumyad/heros-firewall |
+| PerfBench roofline | https://huggingface.co/spaces/itssoumyad/anthropic-perfbench |
+| RouteLLM Pareto | https://huggingface.co/spaces/itssoumyad/routellm-gateway |
+| Mobbin compiler boards | https://huggingface.co/spaces/itssoumyad/mobbin-ui-compiler |
+| HEROS Cloud PLLB | https://huggingface.co/spaces/itssoumyad/heros-cloud-saas |
 | Migration dataset | https://huggingface.co/datasets/itssoumyad/heros-migration-500 |
 | Questions dataset | https://huggingface.co/datasets/itssoumyad/graphrag-questions-100 |
 

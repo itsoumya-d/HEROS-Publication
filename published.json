@@ -83,5 +83,6 @@
     "All demo Spaces are static because Hugging Face requires PRO for Gradio/Docker Spaces on cpu-basic.",
     "No model weights were uploaded because no GPU training was run; ZeroGPU demos are not claimed.",
     "Evidence pages show deterministic/synthetic/mock local results, not production or customer results."
-  ]
+  ],
+  "collection": "https://huggingface.co/collections/itssoumyad/heros-ai-systems-portfolio-6ae5978d7b5be2d991c1934b"
 }

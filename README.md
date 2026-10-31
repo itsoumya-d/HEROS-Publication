@@ -16,6 +16,8 @@ runtime status.
 
 ## Published
 
+Collection: https://huggingface.co/collections/itssoumyad/heros-ai-systems-portfolio-6ae5978d7b5be2d991c1934b
+
 | Asset | URL |
 |---|---|
 | Portfolio hub | https://huggingface.co/spaces/itssoumyad/portfolio |

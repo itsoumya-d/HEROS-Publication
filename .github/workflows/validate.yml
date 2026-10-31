@@ -1,0 +1,38 @@
+name: Validate publication package
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile publisher
+        run: python -m py_compile publish.py
+      - name: Verify assets exist
+        run: |
+          test -f published.json
+          test -f README.md
+          test -f spaces/portfolio/index.html
+          test -f datasets/heros-migration-500/heros_migration_500.jsonl
+          test -f datasets/graphrag-questions-100/questions_100.jsonl
+      - name: Validate Space manifests
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          for readme in Path('spaces').glob('*/README.md'):
+              text = readme.read_text()
+              assert 'sdk: static' in text, readme
+              assert text.startswith('---'), readme
+          print('space manifests ok')
+          PY

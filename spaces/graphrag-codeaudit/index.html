@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GraphRAG CodeAudit Explorer</title>
+<style>
+:root{--paper:#f7f5f2;--ink:#161616;--muted:#6b655d;--line:#e4e0da;--accent:#067647}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 ui-sans-serif,system-ui,sans-serif}
+main{max-width:980px;margin:0 auto;padding:48px 24px}h1{font-size:40px;line-height:1.05;letter-spacing:-.03em;margin:0 0 12px}
+.lead{color:var(--muted);max-width:72ch}.mono{font-family:ui-monospace,SFMono-Regular,monospace}
+.layout{display:grid;grid-template-columns:300px 1fr;gap:18px;margin-top:24px}@media(max-width:760px){.layout{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
+button{display:block;width:100%;text-align:left;min-height:48px;margin:0 0 8px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;font:13px/1.4 inherit;cursor:pointer}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}button.active{border-color:var(--accent);background:#ecfdf3}
+.answer{white-space:pre-wrap;font-size:14px;line-height:1.65}.meta{font-size:12px;color:var(--muted);margin-top:12px}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}td,th{padding:6px 0;border-bottom:1px solid var(--line);text-align:left}
+.tag{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:2px 8px;font-size:12px;margin-right:6px}
+a{color:var(--accent)}code{font-family:ui-monospace,monospace;font-size:12px}
+</style></head><body><main>
+<p class="mono" style="color:var(--accent);font-size:12px;letter-spacing:.18em;text-transform:uppercase">GraphRAG-CodeAudit · local-to-global</p>
+<h1>Ask a codebase <span style="color:var(--accent)">for its risk shape</span></h1>
+<p class="lead">Extract entities, typed edges, and security claims; partition the graph into communities; answer through entity neighbourhoods or community reports. The sample repository is synthetic and the judge is deterministic.</p>
+<div class="layout">
+ <div class="card"><p class="mono" style="font-size:12px;color:var(--muted)">SAMPLE QUESTIONS</p><div id="buttons"></div><p class="meta" id="meta"></p></div>
+ <div class="card"><h2 id="q" style="margin-top:0;font-size:18px"></h2><div class="answer" id="answer"></div><p class="meta" id="citations"></p></div>
+</div>
+<div class="card" style="margin-top:18px"><h2 style="margin-top:0;font-size:18px">GraphRAG vs flat vector RAG</h2><table><thead><tr><th>Metric</th><th>GraphRAG</th><th>Flat</th></tr></thead><tbody id="metrics"></tbody></table><p class="meta" id="summary"></p></div>
+<p class="meta"><span class="tag">arXiv:2404.16130</span> Source: <a href="https://github.com/itsoumya-d/GraphRAG-CodeAudit">GraphRAG-CodeAudit</a> · Dataset: <a href="https://huggingface.co/datasets/itssoumyad/graphrag-questions-100">graphrag-questions-100</a></p>
+</main>
+<script>
+fetch('./demo.json').then(r=>r.json()).then(data=>{
+ const buttons=document.getElementById('buttons'); let active=0;
+ const render=(i)=>{active=i;const d=data.queries[i];document.getElementById('q').textContent=d.question;document.getElementById('answer').textContent=d.answer;document.getElementById('citations').textContent='Mode: '+d.mode+' · Citations: '+d.citations.join(', ')+' · Communities: '+(d.communities.join(', ')||'—');
+ [...buttons.children].forEach((b,j)=>b.classList.toggle('active',j===i));};
+ data.queries.forEach((q,i)=>{const b=document.createElement('button');b.type='button';b.textContent=q.question;b.addEventListener('click',()=>render(i));buttons.appendChild(b)});
+ document.getElementById('meta').textContent='Method: '+data.method+' · '+data.communities+' communities';
+ const body=document.getElementById('metrics');for(const k of ['comprehensiveness','diversity','empowerment','directness']){const tr=document.createElement('tr');tr.innerHTML='<td>'+k+'</td><td>'+data.graph[k].toFixed(2)+'</td><td>'+data.flat[k].toFixed(2)+'</td>';body.appendChild(tr)}
+ const tr=document.createElement('tr');tr.innerHTML='<td><strong>average</strong></td><td><strong>'+((data.graph.comprehensiveness+data.graph.diversity+data.graph.empowerment+data.graph.directness)/4).toFixed(2)+'</strong></td><td><strong>'+((data.flat.comprehensiveness+data.flat.diversity+data.flat.empowerment+data.flat.directness)/4).toFixed(2)+'</strong></td>';body.appendChild(tr);
+ document.getElementById('summary').textContent='Win rate: '+(data.win_rate*100).toFixed(1)+'% on 100 synthetic questions. Deterministic rubric, not the paper LLM judge.';
+ render(0);
+}).catch(e=>{document.getElementById('answer').textContent='Demo data failed to load: '+e});
+</script></body></html>

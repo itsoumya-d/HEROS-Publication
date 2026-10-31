@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reflexion-SWE Repair Loop</title>
+<style>
+:root{--paper:#f7f5f2;--ink:#161616;--muted:#6b655d;--line:#e4e0da;--accent:#4f46e5}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 ui-sans-serif,system-ui,sans-serif}
+main{max-width:900px;margin:0 auto;padding:48px 24px}h1{font-size:40px;line-height:1.05;letter-spacing:-.03em;margin:0 0 12px}
+.lead{color:var(--muted);max-width:70ch}.mono{font-family:ui-monospace,SFMono-Regular,monospace}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:20px;font-size:14px}
+th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line)}th{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+tr:last-child td{border-bottom:0}.win{color:#067647;font-weight:700}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;margin-top:18px}
+.trace{background:#101114;color:#e7e5e1;border-radius:14px;padding:18px;font:13px/1.6 ui-monospace,monospace;overflow:auto}
+.tag{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:2px 8px;font-size:12px;margin-right:6px}
+a{color:var(--accent)}.note{font-size:13px;color:var(--muted)}
+</style></head><body><main>
+<p class="mono" style="color:var(--accent);font-size:12px;letter-spacing:.18em;text-transform:uppercase">Reflexion-SWE · mechanism ablation</p>
+<h1>Verbal reflection <span style="color:var(--accent)">without weight updates</span></h1>
+<p class="lead">Actor proposes a patch; the evaluator generates up to six AST-filtered tests and runs them in a sandbox; failures become a verbal lesson in a three-slot episodic memory. Training-free GRPO distills group-level lessons into a weighted prior bank.</p>
+<table>
+<thead><tr><th>Mode</th><th>Pass@1</th><th>Mean attempts</th><th>What changed</th></tr></thead><tbody>
+<tr><td>base</td><td>0.000</td><td>1.00</td><td>No executable feedback; self-approval</td></tr>
+<tr><td>-TestGen</td><td>0.000</td><td>1.00</td><td>No generated tests; self-approval</td></tr>
+<tr><td>-Reflection</td><td>0.000</td><td>3.00</td><td>Tests run; no verbal lesson; repeats bug</td></tr>
+<tr><td>full</td><td class="win">1.000</td><td>2.00</td><td>Test failure → lesson → fixed patch</td></tr>
+<tr><td>+TF-GRPO</td><td class="win">1.000</td><td>1.00</td><td>Group priors select the passing shape first</td></tr>
+</tbody></table>
+<div class="card"><h2>Example trace</h2><div class="trace">task: toy-add  (Return the sum of two integers.)
+attempt 1: evaluator 0/2 passed — "assert add(2, 3) == 5" failed
+reflection: "The previous patch failed because 1 test(s) failed. The next attempt must fix the failing behavior, keep the entry point signature, and add no new dependencies."
+attempt 2: evaluator 2/2 passed — final hidden tests 2/2 passed
+patch: def add(a, b): return a + b</div></div>
+<p class="note">These are deterministic fixture results, not HumanEval Rust or SWE-bench model results. The model-dependent run is explicitly pending.</p>
+<p class="note"><span class="tag">arXiv:2303.11366</span><span class="tag">arXiv:2510.08191</span><span class="tag">arXiv:2310.06770</span> Source: <a href="https://github.com/itsoumya-d/Reflexion-SWE">Reflexion-SWE</a></p>
+</main></body></html>

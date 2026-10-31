@@ -1,0 +1,69 @@
+{
+  "queries": [
+    {
+      "question": "What security risks exist in auth.py?",
+      "mode": "global",
+      "answer": "Global GraphRAG synthesized 3 community report(s). Key risks: no high-signal risks extracted. Related components: login, register, restore_snapshot, auth, db, files, api.py. Key risks: hardcoded SECRET_KEY: SECRET_KEY = \"dev-secret-change-me\"; weak hash algorithm: return hashlib.md5(password.encode()).hexdigest(). Related components: hash_password, issue_token, verify_password, hashlib, os, auth.py. Key risks: SQL built from a string: cursor.execute(\"INSERT INTO users (email) VALUES (?)\", (email,)); SQL built from a string: cursor.execute(f\"SELECT id, email FROM users WHERE email = '{email}'\"). Key risks: SQL built from a string: cursor.execute(\"INSERT INTO users (email) VALUES (?)\", (email,)); SQL built from a string: cursor.execute(f\"SELECT id, email FROM users WHERE email = '{email}'\"); hardcoded SECRET_KEY: SECRET_KEY = \"dev-secret-change-me\"; weak hash algorithm: return hashlib.md5(password.encode()).hexdigest(). Sources: api.py:1-20, auth.py:1-18, db.py:1-17",
+      "citations": [
+        "api.py:1-20",
+        "auth.py:1-18",
+        "db.py:1-17"
+      ],
+      "communities": [
+        "L0-0",
+        "L0-1",
+        "L0-2"
+      ]
+    },
+    {
+      "question": "What does files.py do and what risks does it carry?",
+      "mode": "local",
+      "answer": "Local GraphRAG around login, register, restore_snapshot, convert_image, list_dir, load_snapshot, auth, files: 4 risk signal(s). Risks: os.system call: os.system(f\"ls {path}\"); pickle deserialization: return pickle.loads(handle.read()); subprocess with shell=True: # shell=True: flagged by the extractor.; subprocess with shell=True: return subprocess.check_output(f\"convert {path} /tmp/out.png\", shell=True, text=True). Sources: api.py:1-20, files.py:1-20",
+      "citations": [
+        "api.py:1-20",
+        "files.py:1-20"
+      ],
+      "communities": []
+    },
+    {
+      "question": "Which modules depend on auth.py?",
+      "mode": "global",
+      "answer": "Global GraphRAG synthesized 3 community report(s). Related components: login, register, restore_snapshot, auth, db, files, api.py. Related components: hash_password, issue_token, verify_password, hashlib, os, auth.py. Community L0-2 at level 0 contains 4 entities (dependency, function, module). Key risks: SQL built from a string: cursor.execute(\"INSERT INTO users (email) VALUES (?)\", (email,)); SQL built from a string: cursor.execute(f\"SELECT id, email FROM users WHERE email = '{email}'\"). Key risks: SQL built from a string: cursor.execute(\"INSERT INTO users (email) VALUES (?)\", (email,)); SQL built from a string: cursor.execute(f\"SELECT id, email FROM users WHERE email = '{email}'\"); hardcoded SECRET_KEY: SECRET_KEY = \"dev-secret-change-me\"; weak hash algorithm: return hashlib.md5(password.encode()).hexdigest(). Sources: api.py:1-20, auth.py:1-18, db.py:1-17",
+      "citations": [
+        "api.py:1-20",
+        "auth.py:1-18",
+        "db.py:1-17"
+      ],
+      "communities": [
+        "L0-0",
+        "L0-1",
+        "L0-2"
+      ]
+    },
+    {
+      "question": "Show password and secret handling risks.",
+      "mode": "local",
+      "answer": "Local GraphRAG around hash_password, issue_token, verify_password, hashlib, os, auth.py, files.py: 2 risk signal(s). Risks: hardcoded SECRET_KEY: SECRET_KEY = \"dev-secret-change-me\"; weak hash algorithm: return hashlib.md5(password.encode()).hexdigest(). Sources: auth.py:1-18, files.py:1-20",
+      "citations": [
+        "auth.py:1-18",
+        "files.py:1-20"
+      ],
+      "communities": []
+    }
+  ],
+  "method": "louvain-fallback",
+  "communities": 5,
+  "graph": {
+    "comprehensiveness": 8.58,
+    "diversity": 10.0,
+    "empowerment": 4.01,
+    "directness": 7.72
+  },
+  "flat": {
+    "comprehensiveness": 8.58,
+    "diversity": 10.0,
+    "empowerment": 2.28,
+    "directness": 7.4
+  },
+  "win_rate": 0.64
+}

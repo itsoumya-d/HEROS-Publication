@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HEROS AI Systems Portfolio</title>
+<style>
+:root{--paper:#f7f5f2;--ink:#161616;--muted:#6b655d;--line:#e4e0da;--accent:#b42318;--ok:#067647}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 ui-sans-serif,system-ui,sans-serif}
+main{max-width:1120px;margin:0 auto;padding:48px 24px}h1{font-size:46px;line-height:1.02;letter-spacing:-.035em;margin:0 0 14px}
+.lead{color:var(--muted);max-width:78ch}.mono{font-family:ui-monospace,SFMono-Regular,monospace}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:28px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column}
+.card h2{font-size:17px;margin:0 0 6px;letter-spacing:-.01em}.card p{font-size:13px;color:var(--muted);margin:0 0 12px;flex:1}
+.evidence{font-size:12px;color:var(--ink);background:#f2efe9;border-radius:10px;padding:8px 10px;margin-bottom:12px}
+.links{display:flex;flex-wrap:wrap;gap:8px}.links a{min-height:38px;display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:10px;padding:0 10px;font-size:12px;font-weight:650;text-decoration:none;color:var(--ink)}
+.links a.primary{background:var(--accent);color:#fff;border-color:var(--accent)}a{color:var(--accent)}
+.tag{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:2px 8px;font-size:11px;margin-right:6px;color:var(--muted)}
+footer{margin-top:28px;font-size:12px;color:var(--muted)}
+</style></head><body><main>
+<p class="mono" style="color:var(--accent);font-size:12px;letter-spacing:.18em;text-transform:uppercase">itsoumya-d · applied AI systems</p>
+<h1>Agent infrastructure,<br><span style="color:var(--accent)">measured in public.</span></h1>
+<p class="lead">Ten systems spanning RL policy optimization, agent security, retrieval, kernel optimization, post-quantum transport, routing, and governance. Evidence links to source, green CI, and local benchmarks; claims that need unavailable GPUs or credentials are marked pending.</p>
+<div class="grid">
+  <article class="card"><h2>HEROS-RL</h2><p>Critic-free GRPO for zero-downtime PostgreSQL migrations: deterministic format, SQL safety, and forge rewards; 500-case dataset.</p><div class="evidence">33 tests · toy G=4–32 solves task · 1.5B run pending</div><div class="links"><a class="primary" href="https://huggingface.co/spaces/itssoumyad/heros-rl">Reward lab</a><a href="https://huggingface.co/datasets/itssoumyad/heros-migration-500">Dataset</a><a href="https://github.com/itsoumya-d/HEROS-RL">Source</a></div></article>
+  <article class="card"><h2>Reflexion-SWE</h2><p>Actor/evaluator/self-reflection loop with AST-tested code repair and training-free GRPO verbal priors.</p><div class="evidence">40 tests · toy: base 0.00 → full 1.00 · model run pending</div><div class="links"><a class="primary" href="https://huggingface.co/spaces/itssoumyad/reflexion-swe">Demo</a><a href="https://github.com/itsoumya-d/Reflexion-SWE">Source</a></div></article>
+  <article class="card"><h2>GraphRAG-CodeAudit</h2><p>Local-to-global hierarchical GraphRAG over code repositories, with community reports and a flat-RAG baseline.</p><div class="evidence">15 tests · 100 questions: GraphRAG 7.58 vs flat 7.07 · 64% wins</div><div class="links"><a class="primary" href="https://huggingface.co/spaces/itssoumyad/graphrag-codeaudit">Explorer</a><a href="https://huggingface.co/datasets/itssoumyad/graphrag-questions-100">Dataset</a><a href="https://github.com/itsoumya-d/GraphRAG-CodeAudit">Source</a></div></article>
+  <article class="card"><h2>HEROS-Firewall</h2><p>Inline MCP security proxy for OWASP ASI01–ASI10, HMAC human approvals, and Merkle audit receipts.</p><div class="evidence">16 tests · 1,000 adversarial / 200 benign · FNR 0, FPR 0 · p99 0.103 ms</div><div class="links"><a href="https://github.com/itsoumya-d/HEROS-Firewall">Source</a></div></article>
+  <article class="card"><h2>RouteLLM-Gateway</h2><p>Calibrated Bradley–Terry routing with semantic cache and OpenAI/Anthropic-compatible streaming.</p><div class="evidence">12 tests · 98.38% retention · 69.40% cost reduction (synthetic)</div><div class="links"><a href="https://github.com/itsoumya-d/RouteLLM-Gateway">Source</a></div></article>
+  <article class="card"><h2>Anthropic-PerfBench</h2><p>NEON and WGSL transformer kernels across three optimization iterations with a memory roofline.</p><div class="evidence">RMSNorm 3.09× · RoPE 2.35× · INT4 GEMV 11.83× vs scalar</div><div class="links"><a href="https://github.com/itsoumya-d/Anthropic-PerfBench">Source</a></div></article>
+  <article class="card"><h2>edgeinfer v2</h2><p>Browser-local ONNX inference, INT8 Matryoshka retrieval, and gamma=5 speculative decoding.</p><div class="evidence">95 tests · 100k chunks p50 25.1 ms · Recall@10 0.725→1.000</div><div class="links"><a href="https://github.com/itsoumya-d/edgeinfer">Source</a></div></article>
+  <article class="card"><h2>peervault</h2><p>Post-quantum WebRTC transport: FIPS 203 ML-KEM-768 + P-256 hybrid handshake and encrypted data mesh.</p><div class="evidence">100/100 NIST KAT · 75 tests · encrypt 1395 MB/s local</div><div class="links"><a href="https://github.com/itsoumya-d/peervault">Source</a></div></article>
+  <article class="card"><h2>Mobbin-UI-Compiler</h2><p>Reference-driven compiler for five SaaS surfaces with accessibility-invariant source tests.</p><div class="evidence">10 tests · 5 surfaces · live Mobbin browser audit pending</div><div class="links"><a href="https://github.com/itsoumya-d/Mobbin-UI-Compiler">Source</a></div></article>
+  <article class="card"><h2>HEROS-Cloud-SaaS</h2><p>PLLB governance studio: human-approved natural-language policies and per-step Merkle receipts.</p><div class="evidence">6 tests · 70% → 100% completion · 4 policies · synthetic simulation</div><div class="links"><a href="https://github.com/itsoumya-d/HEROS-Cloud-SaaS">Source</a></div></article>
+</div>
+<footer><span class="tag">arXiv:2402.03300</span><span class="tag">arXiv:2501.12948</span><span class="tag">arXiv:2303.11366</span><span class="tag">arXiv:2510.08191</span><span class="tag">arXiv:2310.06770</span><span class="tag">arXiv:2404.16130</span><span class="tag">arXiv:2307.08691</span><span class="tag">arXiv:2406.18665</span><br><br>Source: <a href="https://github.com/itsoumya-d">github.com/itsoumya-d</a>. Local evidence only; no customer, deployment, or ARR claims.</footer>
+</main></body></html>

@@ -1,0 +1,19 @@
+{
+  "published_at": "2026-10-31",
+  "hf_user": "itssoumyad",
+  "spaces": [
+    {"name": "portfolio", "url": "https://huggingface.co/spaces/itssoumyad/portfolio", "sdk": "static", "stage": "RUNNING"},
+    {"name": "heros-rl", "url": "https://huggingface.co/spaces/itssoumyad/heros-rl", "sdk": "static", "stage": "RUNNING"},
+    {"name": "reflexion-swe", "url": "https://huggingface.co/spaces/itssoumyad/reflexion-swe", "sdk": "static", "stage": "RUNNING"},
+    {"name": "graphrag-codeaudit", "url": "https://huggingface.co/spaces/itssoumyad/graphrag-codeaudit", "sdk": "static", "stage": "RUNNING"}
+  ],
+  "datasets": [
+    {"name": "heros-migration-500", "url": "https://huggingface.co/datasets/itssoumyad/heros-migration-500"},
+    {"name": "graphrag-questions-100", "url": "https://huggingface.co/datasets/itssoumyad/graphrag-questions-100"}
+  ],
+  "boundaries": [
+    "Hugging Face requires PRO for Gradio/Docker Spaces on cpu-basic; published demos are static.",
+    "No model weights were uploaded because no GPU training was run.",
+    "The Spaces show deterministic rewards/harness evidence, not trained-model results."
+  ]
+}
